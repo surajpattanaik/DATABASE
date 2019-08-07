@@ -1,0 +1,91 @@
+
+SQL> Insert into Emp1 values(123,suraj);
+Insert into Emp1 values(123,suraj)
+                            *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> Insert into Emp1 (ID,Name);
+Insert into Emp1 (ID,Name)
+                         *
+ERROR at line 1:
+ORA-00926: missing VALUES keyword
+
+
+SQL> Insert into Emp1 (128,suraj);
+Insert into Emp1 (128,suraj)
+                  *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+SQL> Insert into Emp1 (128,'suraj');
+Insert into Emp1 (128,'suraj')
+                  *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+SQL> Insert into Emp1 ('128','suraj');
+Insert into Emp1 ('128','suraj')
+                  *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+SQL> desc emp1;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EID                                                NUMBER(4)
+ ENAME                                              VARCHAR2(20)
+
+SQL> insert into Emp1 (EID,ENAME) values(128,'suraj');
+
+1 row created.
+
+SQL> select * from  Emp1;
+
+       EID ENAME
+---------- --------------------
+       128 suraj
+
+SQL> insert into Emp1 values(123 ,'Mukund');
+
+1 row created.
+
+SQL> select * from  Emp1;
+
+       EID ENAME
+---------- --------------------
+       128 suraj
+       123 Mukund
+
+SQL> savepoint a1;
+
+Savepoint created.
+
+SQL> insert into Emp1 values(124,'shubham');
+
+1 row created.
+
+SQL> select * from  Emp1;
+
+       EID ENAME
+---------- --------------------
+       128 suraj
+       123 Mukund
+       124 shubham
+
+SQL> rollback to a1;
+
+Rollback complete.
+
+SQL> select * from  Emp1;
+
+       EID ENAME
+---------- --------------------
+       128 suraj
+       123 Mukund
+
+SQL>

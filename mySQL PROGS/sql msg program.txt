@@ -1,0 +1,26 @@
+
+
+SQL> conn system/illusio9
+Connected.
+SQL> create or replace procedure proc_msg
+  2  is
+  3  begin
+  4  dbms_output.put_line('hello welcome to pl/sql world..');
+  5  end proc_msg;
+  6  /
+
+Procedure created.
+
+SQL> set serveroutput on
+SQL> execute proc_msg
+hello welcome to pl/sql world..
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> execute proc_msg
+hello welcome to pl/sql world..
+
+PL/SQL procedure successfully completed.
+
+SQL>
